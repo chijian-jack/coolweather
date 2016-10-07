@@ -22,7 +22,8 @@ public class CoolWeatherDB {
 		CoolWeatherOpenHelper dbHelper = new CoolWeatherOpenHelper(context, DB_NAME, null, VERSION);
 		db = dbHelper.getWritableDatabase();
 	}
-	//获取CoolWeatherDB的实例
+	//获取CoolWeatherDB的实例,这种实例化的方法叫单例模式，
+	//一般用于比较大比较复杂的对象，每次调用都返回相同的对象，避免系统资源浪费，节省内存空间
 	public synchronized static CoolWeatherDB getInstance(Context context){
 		if(coolWeatherDB == null){
 			coolWeatherDB = new CoolWeatherDB(context);
@@ -59,14 +60,14 @@ public class CoolWeatherDB {
 		ContentValues values = new ContentValues();
 		values.put("city_name", city.getCityName());
 		values.put("city_code", city.getCityCode());
-		values.put("province_Id", city.getProvinceId());
+		values.put("province_id", city.getProvinceId());
 		db.insert("City", null, values);
 		}
 	}
 	//从数据库读取某省下所有城市的信息
 	public List<City> loadCity(int provinceId){
 		List<City> list = new ArrayList<City>();
-		Cursor cursor = db.query("City", null, "province_Id = ?", new String [] {String.valueOf(provinceId)}, null, null, null);
+		Cursor cursor = db.query("City", null, "province_id = ?", new String [] {String.valueOf(provinceId)}, null, null, null);
 		if(cursor.moveToFirst()){
 			do{
 				City city = new City();
@@ -85,13 +86,14 @@ public class CoolWeatherDB {
 		ContentValues values = new ContentValues();
 		values.put("county_name", county.getCountyName());
 		values.put("county_code", county.getCountyCode());
+		values.put("city_id", county.getCityId());
 		db.insert("County", null, values);
 		}
 	}
 	//从数据库读取某城市所有的县信息
 	public List<County> loadCounty(int cityId){
 		List<County> list = new ArrayList<County>();
-		Cursor cursor = db.query("County", null, "city_Id", new String [] {String.valueOf(cityId)}, null, null, null);
+		Cursor cursor = db.query("County", null, "city_id = ?", new String [] {String.valueOf(cityId)}, null, null, null);
 		if(cursor.moveToFirst()){
 			do{
 				County county = new County();
