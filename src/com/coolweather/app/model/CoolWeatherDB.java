@@ -22,7 +22,7 @@ public class CoolWeatherDB {
 		CoolWeatherOpenHelper dbHelper = new CoolWeatherOpenHelper(context, DB_NAME, null, VERSION);
 		db = dbHelper.getWritableDatabase();
 	}
-	//获取CoolWeatherDB的实例,这种实例化的方法叫单例模式，
+	//获取CoolWeatherDB的实例,这种实例化的方法叫单例模式，这个类叫单例类
 	//一般用于比较大比较复杂的对象，每次调用都返回相同的对象，避免系统资源浪费，节省内存空间
 	public synchronized static CoolWeatherDB getInstance(Context context){
 		if(coolWeatherDB == null){
