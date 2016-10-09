@@ -2,6 +2,7 @@ package com.coolweather.app.activity;
 
 
 import com.coolweather.app.R;
+import com.coolweather.app.service.AutoUpdateService;
 import com.coolweather.app.util.HttpCallbackListener;
 import com.coolweather.app.util.HttpUtil;
 import com.coolweather.app.util.Utility;
@@ -65,7 +66,6 @@ public class WeatherActivity extends Activity implements OnClickListener{
 	//查询天气代号所对应的天气
 	private void queryWeatherInfo(String weatherCode) {
 		String address = "http://www.weather.com.cn/data/cityinfo/"+weatherCode+".html";
-		//String address = "http://wthrcdn.etouch.cn/weather_mini?citykey="+weatherCode+".html";
 		queryFromServer(address,"weatherCode");
 	}
 	private void queryFromServer(final String address, final String type) {
@@ -118,6 +118,9 @@ public class WeatherActivity extends Activity implements OnClickListener{
 		currentDateText.setText(prefs.getString("current_date", ""));
 		weatherInfoLayout.setVisibility(View.VISIBLE);
 		cityNameText.setVisibility(View.VISIBLE);
+		//启动后台自动更新天气服务，每隔8小时更新一次
+		Intent intent = new Intent(this,AutoUpdateService.class);
+		startService(intent);
 	}
 	//切换城市和天气
 	@Override
