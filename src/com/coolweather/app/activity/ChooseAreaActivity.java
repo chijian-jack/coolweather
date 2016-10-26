@@ -3,6 +3,7 @@ package com.coolweather.app.activity;
 import java.util.ArrayList;
 import java.util.List;
 
+
 import com.coolweather.app.R;
 import com.coolweather.app.model.City;
 import com.coolweather.app.model.CoolWeatherDB;

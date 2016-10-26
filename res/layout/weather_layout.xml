@@ -2,19 +2,23 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical" >
+    android:id="@+id/gif"
+    android:background="@drawable/city"
+    android:orientation="vertical"
+    >
+    
    <RelativeLayout 
        android:layout_width="match_parent"
        android:layout_height="50dp"
-       android:background="#484E61"
+       android:background="@drawable/background"
        >
        <Button 
            android:id="@+id/switch_city"
-           android:layout_width="30dp"
-           android:layout_height="30dp"
+           android:layout_width="45dp"
+           android:layout_height="45dp"
            android:layout_centerVertical="true"
            android:layout_marginLeft="10dp"
-           android:background="@drawable/home"
+           android:background="@drawable/title_city"
            />
        <TextView 
            android:layout_width="wrap_content"
@@ -26,19 +30,19 @@
            />
        <Button 
            android:id="@+id/refresh_weather"
-           android:layout_width="30dp"
-           android:layout_height="30dp"
+           android:layout_width="45dp"
+           android:layout_height="45dp"
            android:layout_centerVertical="true"
            android:layout_alignParentRight="true"
            android:layout_marginRight="10dp"
-           android:background="@drawable/refresh"
+           android:background="@drawable/title_update"
            />
    </RelativeLayout>
 	<RelativeLayout 
 	   android:layout_width="match_parent"
        android:layout_height="0dp"
        android:layout_weight="1"
-       android:background="#27A5F9"
+       android:id="@+id/l_weather"
 	    >
 	    <TextView 
 	        android:layout_width="wrap_content"
@@ -48,7 +52,7 @@
 	        android:layout_marginTop="10dp"
 	        android:layout_alignParentRight="true"
 	        android:textColor="#fff"
-	        android:textSize="18sp"
+	        android:textSize="15sp"
 	        />
 	    <LinearLayout 
 	        android:layout_width="wrap_content"
@@ -62,20 +66,20 @@
 	            android:layout_height="40dp"
 	            android:id="@+id/current_date"
 	            android:textColor="#fff"
-	            android:textSize="18sp"
+	            android:textSize="15sp"
 	            android:gravity="center"
 	            />
 	        <TextView 
 	            android:layout_width="wrap_content"
-	            android:layout_height="75dp"
+	            android:layout_height="40dp"
 	            android:id="@+id/weather_desp"
 	            android:layout_gravity="center_horizontal"
 	            android:textColor="#fff"
-	            android:textSize="20sp"
+	            android:textSize="15sp"
 	            />
 	        <LinearLayout 
 	            android:layout_width="wrap_content"
-	            android:layout_height="60dp"
+	            android:layout_height="40dp"
 	            android:layout_gravity="center_horizontal"
 	            android:orientation="horizontal"
 	            >
@@ -85,7 +89,7 @@
 	            android:id="@+id/temp1"
 	            android:layout_gravity="center_vertical"
 	            android:textColor="#fff"
-	            android:textSize="20sp"
+	            android:textSize="15sp"
 	            />
 	            <TextView 
 	            android:layout_width="wrap_content"
@@ -95,7 +99,7 @@
 	            android:layout_marginRight="10dp"
 	            android:layout_gravity="center_vertical"
 	            android:textColor="#fff"
-	            android:textSize="20sp"
+	            android:textSize="15sp"
 	            />
 	            <TextView 
 	            android:layout_width="wrap_content"
@@ -103,12 +107,12 @@
 	            android:id="@+id/temp2"
 	            android:layout_gravity="center_vertical"
 	            android:textColor="#fff"
-	            android:textSize="20sp"
+	            android:textSize="15sp"
 	            />
 	        </LinearLayout>
 	         <LinearLayout 
 	            android:layout_width="wrap_content"
-	            android:layout_height="60dp"
+	            android:layout_height="40dp"
 	            android:layout_gravity="center_horizontal"
 	            android:orientation="horizontal"
 	            >
@@ -118,18 +122,18 @@
 	            android:id="@+id/current_T"
 	            android:layout_gravity="center_vertical"
 	            android:textColor="#fff"
-	            android:textSize="20sp"/>
+	            android:textSize="15sp"/>
 	            <TextView 
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:id="@+id/fl"
 	            android:layout_gravity="center_vertical"
 	            android:textColor="#fff"
-	            android:textSize="20sp"/>
+	            android:textSize="15sp"/>
 	            </LinearLayout>
 	            <LinearLayout 
 	            android:layout_width="wrap_content"
-	            android:layout_height="60dp"
+	            android:layout_height="40dp"
 	            android:layout_gravity="center_horizontal"
 	            android:orientation="horizontal"
 	            >
@@ -139,15 +143,42 @@
 	            android:id="@+id/fx"
 	            android:layout_gravity="center_vertical"
 	            android:textColor="#fff"
-	            android:textSize="20sp"/>
+	            android:textSize="15sp"/>
 	            <TextView 
 	            android:layout_width="wrap_content"
 	            android:layout_height="wrap_content"
 	            android:id="@+id/type"
 	            android:layout_gravity="center_vertical"
 	            android:textColor="#fff"
-	            android:textSize="20sp"/>
+	            android:textSize="15sp"/>
 	            </LinearLayout>
+	            
 	    </LinearLayout>
 	</RelativeLayout>
+	
+	<RelativeLayout android:id="@+id/r_viewpager"
+        android:layout_below="@id/l_weather"
+        android:layout_width="fill_parent"
+        android:layout_height="165.0dip"
+        >
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewpager"
+            android:layout_width="fill_parent"
+            android:layout_height="165.0dip"
+            android:layout_marginTop="5dip"
+            android:overScrollMode="never"
+            android:paddingLeft="10dip"
+            android:paddingRight="10dip"
+            />
+    </RelativeLayout>
+    
+	<LinearLayout
+    android:id="@+id/ll_banner"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="horizontal"
+    android:gravity="center_horizontal">
+	</LinearLayout>
+    
+	
 </LinearLayout>
