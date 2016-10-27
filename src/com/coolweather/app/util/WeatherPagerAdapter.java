@@ -2,43 +2,51 @@ package com.coolweather.app.util;
 
 import java.util.List;
 
+
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentManager;
 import android.support.v4.app.FragmentPagerAdapter;
 
-public class WeatherPagerAdapter extends FragmentPagerAdapter {
+public class WeatherPagerAdapter extends FragmentPagerAdapter{
 	
 	
 	private List<Fragment> fragments;
+	//private static final String TAG = "YiPageAdapter";
 	/**
 	 * 页面内容集合
 	 */
-	//private List<Fragment> fgs = null;
 	private FragmentManager mFragmentManager;
 	/**
 	 * 当数据发生改变时的回调接口
 	 */
 	private OnReloadListener mListener;
-	
+
 	public WeatherPagerAdapter(android.support.v4.app.FragmentManager fm, List<Fragment> fragments) {
 		super(fm);
 		this.fragments = fragments;
-		
+		mFragmentManager = fm;
 		
 	}
 
 	@Override
-	public Fragment getItem(int position) {
-		// TODO Auto-generated method stub
-		return fragments.get(position);
+	public Fragment getItem(int index)
+	{
+		//Log.i(TAG,"ITEM CREATED...");
+		return fragments.get(index);
 	}
 
 	@Override
-	public int getCount() {
-		// TODO Auto-generated method stub
-		return fragments.size();
+	public int getCount()
+	{
+		return fragments.size();// 返回选项卡总数
 	}
-	
+
+	@Override
+	public int getItemPosition(Object object)
+	{
+		return POSITION_NONE;
+	}
+
 	/**
 	 * 重新设置页面内容
 	 * @param items
@@ -79,6 +87,4 @@ public class WeatherPagerAdapter extends FragmentPagerAdapter {
 	{
 		public void onReload();
 	}
-	
-
 }

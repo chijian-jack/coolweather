@@ -162,8 +162,12 @@ public class Utility {
 						editor.putString("type_4", type);
 						editor.putString("low_4", low);
 						editor.putString("date_4", date);
+						count = 0;//他妈的就差count没清零导致这五个天气信息只有最初加载时更新，
+						//之后怎么都不更新了，因为不会执行if{}里面的内容，SharedPreferences里面
+						//也就不会更新
 						}
 		editor.commit();
+		
 	}
 	
 	private static void saveWeatherInfo2(Context context, String wendu,

@@ -4,7 +4,6 @@ import java.util.List;
 
 import com.coolweather.app.R;
 import com.coolweather.app.activity.ChooseAreaActivity;
-import com.coolweather.app.activity.WeatherActivity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -16,7 +15,6 @@ import android.support.v4.view.PagerAdapter;
 import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.View.OnClickListener;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 

@@ -26,11 +26,9 @@ import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v4.view.ViewPager;
 import android.text.TextUtils;
-import android.util.Log;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.Window;
-import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
@@ -92,6 +90,28 @@ public class WeatherActivity extends FragmentActivity implements OnClickListener
 						bannerLayout.addView(bannerView);
 	}
 	
+	private void FragmentUpdate() {
+		
+		mWeatherPagerAdapter.setOnReloadListener(new OnReloadListener()
+		{
+			@Override
+			public void onReload()
+			{
+				fragments = null;
+				List<Fragment> list = new ArrayList<Fragment>();
+				list.add(new FirstWeatherFragment());
+				list.add(new SecondWeatherFragment());
+				mWeatherPagerAdapter.setPagerItems(list);
+			}
+		});
+		mViewPager.setAdapter(mWeatherPagerAdapter);
+		
+	}
+
+	public WeatherPagerAdapter getAdapter()
+	{
+		return mWeatherPagerAdapter;
+	}
 	
 	private void initView() {
 		switchCity = (Button)findViewById(R.id.switch_city);
@@ -125,7 +145,7 @@ public class WeatherActivity extends FragmentActivity implements OnClickListener
 			queryWeatherCode(countyCode);
 		}else{
 			showWeather();
-			fragmentUpdate();
+			FragmentUpdate();
 		}
 	}
 	//查询县级代号所对应的天气代号
@@ -165,7 +185,7 @@ public class WeatherActivity extends FragmentActivity implements OnClickListener
 						@Override
 						public void run() {
 							showWeather();
-							fragmentUpdate();
+							FragmentUpdate();
 						}
 					});
 				}
@@ -183,24 +203,7 @@ public class WeatherActivity extends FragmentActivity implements OnClickListener
 			}
 		});
 	}
-	
-	private void fragmentUpdate() {
-		mWeatherPagerAdapter.setOnReloadListener(new OnReloadListener()
-		{
-			@Override
-			public void onReload()
-			{
-				fragments = null;
-				List<Fragment> list = new ArrayList<Fragment>();
-				list.add(new FirstWeatherFragment());
-				list.add(new SecondWeatherFragment());
-				mWeatherPagerAdapter.setPagerItems(list);
-			}
-		});
-		
-		mViewPager.setAdapter(mWeatherPagerAdapter);
-	}
-	
+
 	//从SharedPreferences文件中读取存储的天气信息，并显示到界面上
 	private void showWeather() {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);
@@ -241,6 +244,7 @@ public class WeatherActivity extends FragmentActivity implements OnClickListener
 		Intent intent = new Intent(this,AutoUpdateService.class);
 		startService(intent);
 	}
+	
 	//切换城市和天气
 	@Override
 	public void onClick(View v) {
