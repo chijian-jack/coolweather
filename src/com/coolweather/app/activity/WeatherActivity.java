@@ -7,8 +7,6 @@ import java.util.List;
 
 import net.youmi.android.normal.banner.BannerManager;
 import net.youmi.android.normal.banner.BannerViewListener;
-import net.youmi.android.normal.spot.SpotListener;
-import net.youmi.android.normal.spot.SpotManager;
 
 import com.coolweather.app.R;
 import com.coolweather.app.fragment.FirstWeatherFragment;
@@ -18,6 +16,7 @@ import com.coolweather.app.util.HttpCallbackListener;
 import com.coolweather.app.util.HttpUtil;
 import com.coolweather.app.util.Utility;
 import com.coolweather.app.util.WeatherPagerAdapter;
+import com.coolweather.app.util.WeatherPagerAdapter.OnReloadListener;
 
 import android.content.Intent;
 import android.content.SharedPreferences;
@@ -126,6 +125,7 @@ public class WeatherActivity extends FragmentActivity implements OnClickListener
 			queryWeatherCode(countyCode);
 		}else{
 			showWeather();
+			fragmentUpdate();
 		}
 	}
 	//查询县级代号所对应的天气代号
@@ -165,8 +165,7 @@ public class WeatherActivity extends FragmentActivity implements OnClickListener
 						@Override
 						public void run() {
 							showWeather();
-							FirstWeatherFragment.updateWeather1();
-							SecondWeatherFragment.updateWeather2();
+							fragmentUpdate();
 						}
 					});
 				}
@@ -184,6 +183,24 @@ public class WeatherActivity extends FragmentActivity implements OnClickListener
 			}
 		});
 	}
+	
+	private void fragmentUpdate() {
+		mWeatherPagerAdapter.setOnReloadListener(new OnReloadListener()
+		{
+			@Override
+			public void onReload()
+			{
+				fragments = null;
+				List<Fragment> list = new ArrayList<Fragment>();
+				list.add(new FirstWeatherFragment());
+				list.add(new SecondWeatherFragment());
+				mWeatherPagerAdapter.setPagerItems(list);
+			}
+		});
+		
+		mViewPager.setAdapter(mWeatherPagerAdapter);
+	}
+	
 	//从SharedPreferences文件中读取存储的天气信息，并显示到界面上
 	private void showWeather() {
 		SharedPreferences prefs = PreferenceManager.getDefaultSharedPreferences(this);

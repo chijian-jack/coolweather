@@ -8,18 +8,29 @@
         android:layout_height="match_parent"
         android:layout_centerInParent="true"
         android:adjustViewBounds="false"
-        android:background="@drawable/guide4"
+        android:background="@drawable/dong"
         android:focusable="true"
         android:scaleType="centerCrop" />
 
-    <ImageView
+    <!-- <ImageView
         android:id="@+id/iv_start"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginBottom="108dp"
+        android:layout_marginBottom="50dp"
         android:background="@drawable/whats_new_start_btn"
-        android:focusable="true" />
-
+        android:focusable="true" />  -->
+    <TextView
+        android:id="@+id/iv_start"
+        android:text="@string/introduce"
+        android:textSize="20sp"
+        android:clickable="true"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="50dp"
+        android:focusable="true" /> 
+ 
 </RelativeLayout>

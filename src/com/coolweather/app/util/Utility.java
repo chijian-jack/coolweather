@@ -163,7 +163,6 @@ public class Utility {
 						editor.putString("low_4", low);
 						editor.putString("date_4", date);
 						}
-		
 		editor.commit();
 	}
 	

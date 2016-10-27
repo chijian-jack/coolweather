@@ -15,13 +15,13 @@ import android.widget.TextView;
 
 
 public class SecondWeatherFragment extends Fragment {
-	private static TextView weekTv1, weekTv2, weekTv3;
+	private  TextView weekTv1, weekTv2, weekTv3;
 	//private static ImageView weather_imgIv1, weather_imgIv2, weather_imgIv3;
-	private static TextView type1, type2, type3;
-	private static TextView climateTv1, climateTv2, climateTv3;
-	private static TextView windTv1, windTv2, windTv3;
-	private static TextView fx1,fx2,fx3;
-	private static SharedPreferences prefs;
+	private  TextView type1, type2, type3;
+	private  TextView climateTv1, climateTv2, climateTv3;
+	private  TextView windTv1, windTv2, windTv3;
+	private  TextView fx1,fx2,fx3;
+	private  SharedPreferences prefs;
 	
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -63,7 +63,7 @@ public class SecondWeatherFragment extends Fragment {
 		return view;
 	}
 	
-	public static void updateWeather2(){
+	public  void updateWeather2(){
 		
 		weekTv1.setText(prefs.getString("date_2", ""));
 		weekTv2.setText(prefs.getString("date_3", ""));
@@ -84,8 +84,6 @@ public class SecondWeatherFragment extends Fragment {
 		fx1.setText(prefs.getString("fengxiang_2", ""));
 		fx2.setText(prefs.getString("fengxiang_3", ""));
 		fx3.setText(prefs.getString("fengxiang_4", ""));
-		
-		
 		
 	}
 }

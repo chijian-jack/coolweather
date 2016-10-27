@@ -10,6 +10,6 @@
         android:adjustViewBounds="false"
         android:focusable="true"
         android:scaleType="centerCrop"
-        android:background="@drawable/guide1" />
+        android:background="@drawable/chun" />
 
 </RelativeLayout>

@@ -3,6 +3,7 @@ package com.coolweather.app.start;
 import java.util.List;
 
 import com.coolweather.app.R;
+import com.coolweather.app.activity.ChooseAreaActivity;
 import com.coolweather.app.activity.WeatherActivity;
 
 import android.app.Activity;
@@ -16,6 +17,7 @@ import android.support.v4.view.ViewPager;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.widget.ImageView;
+import android.widget.TextView;
 
 
 /**
@@ -69,7 +71,7 @@ public class ViewPagerAdapter extends PagerAdapter {
     public Object instantiateItem(View arg0, int arg1) {
         ((ViewPager) arg0).addView(views.get(arg1), 0);
         if (arg1 == views.size() - 1) {
-            ImageView mStartWeiboImageButton = (ImageView) arg0
+            TextView mStartWeiboImageButton = (TextView) arg0
                     .findViewById(R.id.iv_start);
             mStartWeiboImageButton.setOnClickListener(new OnClickListener() {
 
@@ -88,7 +90,7 @@ public class ViewPagerAdapter extends PagerAdapter {
 
     private void goHome() {
         // Ìø×ª
-        Intent intent = new Intent(activity, WeatherActivity.class);
+        Intent intent = new Intent(activity, ChooseAreaActivity.class);
         activity.startActivity(intent);
         activity.finish();
     }
