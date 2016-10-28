@@ -54,7 +54,7 @@ public class GuideActivity extends Activity implements OnPageChangeListener {
         vp = (ViewPager) findViewById(R.id.viewpager);
         vp.setAdapter(vpAdapter);
         // °ó¶¨»Øµ÷
-        //vp.setOnPageChangeListener(this);
+        vp.setOnPageChangeListener(this);
     }
 
     private void initDots() {
