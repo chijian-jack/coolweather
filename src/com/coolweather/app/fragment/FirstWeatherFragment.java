@@ -67,9 +67,9 @@ public class FirstWeatherFragment extends Fragment {
 		weekTv2.setText(prefs.getString("date", ""));
 		weekTv3.setText(prefs.getString("date_1", ""));
 		
-		climateTv1.setText(prefs.getString("low1", "").substring(3)+"/"+prefs.getString("high1", "").substring(3));
-		climateTv2.setText(prefs.getString("low", "").substring(3)+"/"+prefs.getString("high", "").substring(3));
-		climateTv3.setText(prefs.getString("low_1", "").substring(3)+"/"+prefs.getString("high_1", "").substring(3));
+		climateTv1.setText(prefs.getString("low1", "")+"\n"+prefs.getString("high1", ""));
+		climateTv2.setText(prefs.getString("low", "")+"\n"+prefs.getString("high", ""));
+		climateTv3.setText(prefs.getString("low_1", "")+"\n"+prefs.getString("high_1", ""));
 
 
 		type1.setText(prefs.getString("type1", ""));

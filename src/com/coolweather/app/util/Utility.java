@@ -166,6 +166,7 @@ public class Utility {
 						//之后怎么都不更新了，因为不会执行if{}里面的内容，SharedPreferences里面
 						//也就不会更新
 						}
+		
 		editor.commit();
 		
 	}

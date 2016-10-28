@@ -53,7 +53,7 @@
         android:layout_below="@id/temperature"
         android:gravity="center"
         android:ellipsize="marquee"
-        android:singleLine="true"
+        android:singleLine="false"
         android:textColor="@android:color/white"
         android:textSize="13sp" />
 
@@ -61,6 +61,7 @@
         android:id="@+id/wind"
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"
+        android:singleLine="true"
         android:layout_below="@id/climate"
         android:ellipsize="marquee"
         android:focusable="true"
@@ -68,7 +69,6 @@
         android:gravity="center"
         android:marqueeRepeatLimit="3"
         android:scrollHorizontally="true"
-        android:singleLine="true"
         android:textColor="@android:color/white"
         android:textSize="13sp" />
     
