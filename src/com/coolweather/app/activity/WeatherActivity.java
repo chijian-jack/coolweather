@@ -33,6 +33,7 @@ import android.widget.Button;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+import android.widget.Toast;
 
 public class WeatherActivity extends FragmentActivity implements OnClickListener{
 	private LinearLayout weatherInfoLayout;
@@ -138,10 +139,12 @@ public class WeatherActivity extends FragmentActivity implements OnClickListener
 		if(!TextUtils.isEmpty(countyCode)){
 			//如果有县级代号就去查询天气
 			publicText.setText("同步中....");
-			weatherInfoLayout.setVisibility(View.INVISIBLE);
+			
 			gif.setVisibility(View.INVISIBLE);
-			viewPagerLayout.setVisibility(View.INVISIBLE);
 			cityNameText.setVisibility(View.INVISIBLE);
+			weatherInfoLayout.setVisibility(View.INVISIBLE);
+			viewPagerLayout.setVisibility(View.INVISIBLE);
+			
 			queryWeatherCode(countyCode);
 		}else{
 			showWeather();
@@ -198,6 +201,8 @@ public class WeatherActivity extends FragmentActivity implements OnClickListener
 					@Override
 					public void run() {
 						publicText.setText("同步失败");
+						Toast.makeText(getApplicationContext(), "亲！网络君不给力啦！！", Toast.LENGTH_SHORT).show();
+						//gif.setBackgroundResource(R.drawable.wifi);
 					}
 				});
 			}
@@ -220,9 +225,9 @@ public class WeatherActivity extends FragmentActivity implements OnClickListener
 		fx.setText("风向： "+prefs.getString("fengxiang", ""));
 		type.setText("SKY ： "+prefs.getString("type", ""));
 		
-		viewPagerLayout.setVisibility(View.VISIBLE);
 		gif.setVisibility(View.VISIBLE);
 		weatherInfoLayout.setVisibility(View.VISIBLE);
+		viewPagerLayout.setVisibility(View.VISIBLE);
 		
 		if(prefs.getString("type", "").equals("晴")){
 			gif.setBackgroundResource(R.drawable.qing);
@@ -232,14 +237,19 @@ public class WeatherActivity extends FragmentActivity implements OnClickListener
 			gif.setBackgroundResource(R.drawable.xue);
 		}else if(prefs.getString("type", "").indexOf("雾") != -1){
 			gif.setBackgroundResource(R.drawable.wu);
-		}else if(prefs.getString("type", "").equals("多云") || prefs.getString("type", "").equals("阴")){
+		}else if(prefs.getString("type", "").equals("多云")){
 			gif.setBackgroundResource(R.drawable.duoyun);
-		}else if(prefs.getString("type", "").indexOf("风") != -1){
-			gif.setBackgroundResource(R.drawable.feng);
 		}else if(prefs.getString("type", "").indexOf("霾") != -1){
 			gif.setBackgroundResource(R.drawable.mai);
+		}else if(prefs.getString("type", "").equals("阴")){
+			gif.setBackgroundResource(R.drawable.yin);
+		}else if(prefs.getString("type", "").indexOf("雷") != -1){
+			gif.setBackgroundResource(R.drawable.leizhenyu);
+		}else if(prefs.getString("type", "").equals("雨夹雪")){
+			gif.setBackgroundResource(R.drawable.yujiaxue);
+		}else if(prefs.getString("type", "").indexOf("沙") != -1){
+			gif.setBackgroundResource(R.drawable.yangsha);
 		}
-		
 		//启动后台自动更新天气服务，每隔8小时更新一次
 		Intent intent = new Intent(this,AutoUpdateService.class);
 		startService(intent);
