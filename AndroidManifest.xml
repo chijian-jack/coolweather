@@ -1,12 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.coolweather.app"
-    android:versionCode="1"
-    android:versionName="1.0" >
+    package="chijian.coolweather.app"
+    android:versionCode="3"
+    android:versionName="1.0.2" >
 
     <uses-sdk
-        android:minSdkVersion="19"
-        android:targetSdkVersion="19" />
+        android:minSdkVersion="14"
+        android:targetSdkVersion="23" />
 	<uses-permission android:name="android.permission.INTERNET"/>
 	<uses-permission android:name="android.permission.READ_PHONE_STATE" />
 	<uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
@@ -21,7 +21,7 @@
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.coolweather.app.start.SplashActivity"
+            android:name="chijian.coolweather.app.start.SplashActivity"
             android:label="@string/app_name" 
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:screenOrientation="portrait">
@@ -32,67 +32,35 @@
             </intent-filter>
         </activity>
         <activity
-            android:name="com.coolweather.app.start.GuideActivity"
+            android:name="chijian.coolweather.app.start.GuideActivity"
             android:label="@string/app_name" 
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:screenOrientation="portrait"/>
         <activity
-            android:name="com.coolweather.app.activity.ChooseAreaActivity"
+            android:name="chijian.coolweather.app.activity.ChooseAreaActivity"
             android:label="@string/app_name" 
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:screenOrientation="portrait"/>
 		<activity
-            android:name="com.coolweather.app.activity.WeatherActivity"
+            android:name="chijian.coolweather.app.activity.WeatherActivity"
             android:label="@string/app_name" 
             android:theme="@android:style/Theme.Light.NoTitleBar"
             android:screenOrientation="portrait"/>
 		<receiver 
-            android:name="com.coolweather.app.receiver.AutoUpdateReceiver"
+            android:name="chijian.coolweather.app.receiver.AutoUpdateReceiver"
             ></receiver>
         <service 
-            android:name="com.coolweather.app.service.AutoUpdateService"
+            android:name="chijian.coolweather.app.service.AutoUpdateService"
             ></service>
         
-        <activity
-    android:name="net.youmi.android.AdBrowser"
-    android:configChanges="keyboard|keyboardHidden|orientation|screenSize"
-    android:theme="@android:style/Theme.Light.NoTitleBar" >
-</activity>
-<service
-    android:name="net.youmi.android.AdService"
-    android:exported="false" >
-</service>
-<receiver
-    android:name="net.youmi.android.AdReceiver" >
-    <intent-filter>
-        <action android:name="android.intent.action.PACKAGE_ADDED" />
-        <data android:scheme="package" />
-    </intent-filter>
-</receiver>
-
-<meta-data
-    android:name="YOUMI_CHANNEL"
-    android:value="10360" >
+<meta-data 
+    android:value="5814adc4e88bad4bd2000aca" 
+    android:name="UMENG_APPKEY">
 </meta-data>
 
-<meta-data
-    android:name="YOUMI_CHANNEL"
-    android:value="10190" >
-</meta-data>
-
-<meta-data
-    android:name="YOUMI_CHANNEL"
-    android:value="10050" >
-</meta-data>
-
-<meta-data
-    android:name="YOUMI_CHANNEL"
-    android:value="10030" >
-</meta-data>
-
-
-
+<meta-data 
+    android:value="tenxunyingyong"
+    android:name="UMENG_CHANNEL"/>
 
     </application>
-
 </manifest>
